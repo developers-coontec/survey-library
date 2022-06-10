@@ -1,6 +1,6 @@
 #!/bin/bash
 
-npm install -g npm-cli-login
+#npm install -g npm-cli-login
 npm-cli-login -u jenkins -p jenkins1234!1 -e developers@coontec.com -r https://maven.meback.ai/repository/npm-private/
 
 #npm set //maven.meback.ai/repository/npm-private/:_authToken NpmToken.0b029231-1b5d-3fd6-9817-a01f575d1ea4
