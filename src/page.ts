@@ -420,6 +420,7 @@ Serializer.addClass(
     },
     { name: "title:text", serializationProperty: "locTitle" },
     { name: "description:text", serializationProperty: "locDescription" },
+    { name: "displayWhenEmpty:boolean", serializationProperty: "displayWhenEmpty" },
   ],
   function() {
     return new PageModel();
