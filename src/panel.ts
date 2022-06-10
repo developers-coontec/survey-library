@@ -262,6 +262,7 @@ export class PanelModelBase extends SurveyElement
 
   private elementsValue: Array<IElement>;
   private isQuestionsReady: boolean = false;
+  private displayWhenEmpty: boolean = false;
   private questionsValue: Array<Question> = new Array<Question>();
   addElementCallback: (element: IElement) => void;
   removeElementCallback: (element: IElement) => void;
@@ -287,6 +288,12 @@ export class PanelModelBase extends SurveyElement
         this.updateVisibleIndexes();
       }
     );
+  }
+  public getDisplayWhenEmpty(): boolean {
+    return this.displayWhenEmpty;
+  }
+  public setDisplayWhenEmpty(value: boolean) {
+    this.displayWhenEmpty = value;
   }
   public getType(): string {
     return "panelbase";
@@ -1164,6 +1171,9 @@ export class PanelModelBase extends SurveyElement
     for (var i = 0; i < this.elements.length; i++) {
       if (this.elements[i] == exceptionQuestion) continue;
       if (this.elements[i].isVisible) return true;
+    }
+    if (this.getDisplayWhenEmpty() === true) {
+      return true;
     }
     return false;
   }
