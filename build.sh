@@ -8,7 +8,7 @@ npm-cli-login -u jenkins -p jenkins1234\!1 -e developers@coontec.com -r https://
 
 rm -rf build
 
-npm install --registry https://maven.meback.ai/repository/npm-group
+npm install --registry https://maven.meback.ai/repository/npm-group/
 #npm install
 
 
