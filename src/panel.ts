@@ -262,7 +262,7 @@ export class PanelModelBase extends SurveyElement
 
   private elementsValue: Array<IElement>;
   private isQuestionsReady: boolean = false;
-  private displayWhenEmpty: boolean = false;
+  private _displayWhenEmpty: boolean = false;
   private questionsValue: Array<Question> = new Array<Question>();
   addElementCallback: (element: IElement) => void;
   removeElementCallback: (element: IElement) => void;
@@ -289,11 +289,11 @@ export class PanelModelBase extends SurveyElement
       }
     );
   }
-  public getDisplayWhenEmpty(): boolean {
-    return this.displayWhenEmpty;
+  public get displayWhenEmpty(): boolean {
+    return this._displayWhenEmpty;
   }
-  public setDisplayWhenEmpty(value: boolean) {
-    this.displayWhenEmpty = value;
+  public set displayWhenEmpty(value: boolean) {
+    this._displayWhenEmpty = value;
   }
   public getType(): string {
     return "panelbase";
@@ -1172,7 +1172,7 @@ export class PanelModelBase extends SurveyElement
       if (this.elements[i] == exceptionQuestion) continue;
       if (this.elements[i].isVisible) return true;
     }
-    if (this.getDisplayWhenEmpty() === true) {
+    if (this.displayWhenEmpty === true) {
       return true;
     }
     return false;
@@ -1935,6 +1935,7 @@ Serializer.addClass(
     },
     { name: "title:text", serializationProperty: "locTitle" },
     { name: "description:text", serializationProperty: "locDescription" },
+    { name: "displayWhenEmpty:boolean", serializationProperty: "displayWhenEmpty" },
     {
       name: "questionsOrder",
       default: "default",
