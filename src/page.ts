@@ -16,7 +16,6 @@ import { CssClassBuilder } from "./utils/cssClassBuilder";
  */
 export class PageModel extends PanelModelBase implements IPage {
   private hasShownValue: boolean = false;
-  private _displayWhenEmpty: boolean = false;
   constructor(name: string = "") {
     super(name);
     var self = this;
@@ -28,10 +27,10 @@ export class PageModel extends PanelModelBase implements IPage {
     this.createLocalizableString("navigationDescription", this, true);
   }
   public get displayWhenEmpty(): boolean {
-    return this._displayWhenEmpty;
+    return this.getPropertyValue("displayWhenEmpty");
   }
   public set displayWhenEmpty(value: boolean) {
-    this._displayWhenEmpty = value;
+    this.setPropertyValue("displayWhenEmpty", value);
   }
   getIsPageVisible(exceptionQuestion: IQuestion): boolean {
     let returnValue = super.getIsPageVisible(exceptionQuestion);
@@ -434,7 +433,7 @@ Serializer.addClass(
     },
     { name: "title:text", serializationProperty: "locTitle" },
     { name: "description:text", serializationProperty: "locDescription" },
-    { name: "displayWhenEmpty:boolean", serializationProperty: "displayWhenEmpty" },
+    { name: "displayWhenEmpty:boolean", isSerializable: true },
   ],
   function() {
     return new PageModel();
