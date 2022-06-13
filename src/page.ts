@@ -33,11 +33,11 @@ export class PageModel extends PanelModelBase implements IPage {
     this.setPropertyValue("displayWhenEmpty", value);
   }
   getIsPageVisible(exceptionQuestion: IQuestion): boolean {
-    let returnValue = super.getIsPageVisible(exceptionQuestion);
+    const returnValue = super.getIsPageVisible(exceptionQuestion);
     if (returnValue === false && this.displayWhenEmpty === true) {
       return true;
     } else {
-      return false;
+      return returnValue;
     }
   }
   public getType(): string {
