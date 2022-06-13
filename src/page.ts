@@ -34,10 +34,11 @@ export class PageModel extends PanelModelBase implements IPage {
   }
   getIsPageVisible(exceptionQuestion: IQuestion): boolean {
     let returnValue = super.getIsPageVisible(exceptionQuestion);
-    if (returnValue !== true && this.displayWhenEmpty === true) {
+    if (returnValue === false && this.displayWhenEmpty === true) {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
   public getType(): string {
     return "page";
